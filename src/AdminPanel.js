@@ -21,21 +21,24 @@ const AdminPanel = () => {
       <h1>QR-kodegenerator</h1>
       <p>Trykk på knappen under for å generere en unik nøkkel og tilhørende QR-kode.</p>
 
-      <CustomButton onClick={generateKey}>Generer QR-nøkkel</CustomButton>
+      <div style={{ marginBottom: '1.5rem' }}>
+        <CustomButton onClick={generateKey}>Generer QR-nøkkel</CustomButton>
+      </div>
 
       {generated && (
-        <div>
+        <div style={{ marginBottom: '2rem' }}>
           <p><strong>Nøkkel:</strong> {key}</p>
           <QRCode value={key} size={128} />
         </div>
       )}
 
-      <CustomButton variant="secondary" onClick={() => navigate('/admin')}>
-        Tilbake til Admin-panel
-      </CustomButton>
+      <div style={{ marginTop: '2rem' }}>
+        <CustomButton variant="secondary" onClick={() => navigate('/admin')}>
+          Tilbake til Admin-panel
+        </CustomButton>
+      </div>
     </div>
   );
 };
 
 export default AdminPanel;
-
