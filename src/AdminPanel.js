@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
+import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
   const [key, setKey] = useState('');
   const [generated, setGenerated] = useState(false);
+  const navigate = useNavigate();
 
   const generateKey = () => {
     const newKey = Math.random().toString(36).substring(2, 10);
@@ -29,6 +31,13 @@ const AdminPanel = () => {
           <QRCode value={key} size={128} />
         </div>
       )}
+
+      <button
+        onClick={() => navigate('/admin')}
+        style={{ marginTop: '2rem', padding: '0.75rem 1.5rem', fontSize: '1rem', backgroundColor: '#ccc', border: 'none', borderRadius: '0.5rem' }}
+      >
+        Tilbake til Admin-panel
+      </button>
     </div>
   );
 };
