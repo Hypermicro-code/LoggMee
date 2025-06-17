@@ -1,6 +1,4 @@
-// Hovedside for admin-panelet – LoggMee
 // AdminDashboard.js – med modaler og CustomButton
-
 import React, { useState } from 'react';
 import CustomButton from './components/CustomButton';
 import ModalBase from './components/ModalBase';
@@ -14,11 +12,13 @@ const AdminDashboard = () => {
     <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       <h1>Adminpanel – LoggMee</h1>
 
-      <CustomButton onClick={() => setActiveModal('sprak')}>Språkvalg</CustomButton>
-      <CustomButton onClick={() => setActiveModal('tema')}>Tema og bakgrunn</CustomButton>
-      <CustomButton onClick={() => setActiveModal('postering')}>Posteringsvalg</CustomButton>
-      <CustomButton onClick={() => setActiveModal('eksport')}>Eksport av innlegg</CustomButton>
-      <CustomButton onClick={() => window.location.href = '/admin/qr'}>QR-kode generator</CustomButton>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <CustomButton onClick={() => setActiveModal('sprak')}>Språkvalg</CustomButton>
+        <CustomButton onClick={() => setActiveModal('tema')}>Tema og bakgrunn</CustomButton>
+        <CustomButton onClick={() => setActiveModal('postering')}>Posteringsvalg</CustomButton>
+        <CustomButton onClick={() => setActiveModal('eksport')}>Eksport av innlegg</CustomButton>
+        <CustomButton onClick={() => window.location.href = '/admin/qr'}>QR-kode generator</CustomButton>
+      </div>
 
       {/* Modal for språkvalg */}
       {activeModal === 'sprak' && (
@@ -33,4 +33,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-
