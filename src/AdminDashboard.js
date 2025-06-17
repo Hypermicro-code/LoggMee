@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import CustomButton from './components/CustomButton';
 import ModalBase from './components/ModalBase';
+import ModalSprak from './components/ModalSprak';
+import ModalTema from './components/ModalTema';
+import ModalPostering from './components/ModalPostering';
+import ModalEksport from './components/ModalEksport';
 
 const AdminDashboard = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -20,14 +24,29 @@ const AdminDashboard = () => {
         <CustomButton onClick={() => window.location.href = '/admin/qr'}>QR-kode generator</CustomButton>
       </div>
 
-      {/* Modal for språkvalg */}
       {activeModal === 'sprak' && (
         <ModalBase title="Språkvalg" onClose={closeModal}>
-          <p>Her kommer språkvalg-innhold.</p>
+          <ModalSprak onClose={closeModal} />
         </ModalBase>
       )}
 
-      {/* Flere modaler kan legges til på samme måte */}
+      {activeModal === 'tema' && (
+        <ModalBase title="Tema og bakgrunn" onClose={closeModal}>
+          <ModalTema onClose={closeModal} />
+        </ModalBase>
+      )}
+
+      {activeModal === 'postering' && (
+        <ModalBase title="Posteringsvalg" onClose={closeModal}>
+          <ModalPostering onClose={closeModal} />
+        </ModalBase>
+      )}
+
+      {activeModal === 'eksport' && (
+        <ModalBase title="Eksport av innlegg" onClose={closeModal}>
+          <ModalEksport onClose={closeModal} />
+        </ModalBase>
+      )}
     </div>
   );
 };
