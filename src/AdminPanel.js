@@ -30,6 +30,12 @@ const AdminPanel = () => {
         </div>
       )}
     </div>
+      <button
+        onClick={() => navigate('/admin')}
+        style={{ marginTop: '2rem', padding: '0.75rem 1.5rem', fontSize: '1rem', backgroundColor: '#ccc', border: 'none', borderRadius: '0.5rem' }}
+      >
+        Tilbake til Admin-panel
+      </button>
   );
 };
 
