@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
 import { useNavigate } from 'react-router-dom';
+import CustomButton from './components/CustomButton';
 
 const AdminPanel = () => {
   const [key, setKey] = useState('');
@@ -19,12 +20,9 @@ const AdminPanel = () => {
     <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       <h1>QR-kodegenerator</h1>
       <p>Trykk på knappen under for å generere en unik nøkkel og tilhørende QR-kode.</p>
-      <button
-        onClick={generateKey}
-        style={{ padding: '1rem', fontSize: '1rem', marginBottom: '1rem', backgroundColor: '#0055aa', color: '#fff', border: 'none', borderRadius: '0.5rem' }}
-      >
-        Generer QR-nøkkel
-      </button>
+
+      <CustomButton onClick={generateKey}>Generer QR-nøkkel</CustomButton>
+
       {generated && (
         <div>
           <p><strong>Nøkkel:</strong> {key}</p>
@@ -32,14 +30,12 @@ const AdminPanel = () => {
         </div>
       )}
 
-      <button
-        onClick={() => navigate('/admin')}
-        style={{ marginTop: '2rem', padding: '0.75rem 1.5rem', fontSize: '1rem', backgroundColor: '#ccc', border: 'none', borderRadius: '0.5rem' }}
-      >
+      <CustomButton variant="secondary" onClick={() => navigate('/admin')}>
         Tilbake til Admin-panel
-      </button>
+      </CustomButton>
     </div>
   );
 };
 
 export default AdminPanel;
+
