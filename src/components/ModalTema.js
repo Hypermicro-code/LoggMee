@@ -1,7 +1,9 @@
-// Modalinnhold for Tema og bakgrunn
+// ModalTema.js – oppdatert for Firestore + Firebase Storage
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
-import { lagreTema } from './lagreTemaFirestore';
+import { lagreAdminInnstillinger } from '../firebase/lagreAdminInnstillinger';
+import { storage } from '../firebase/firebaseConfig';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ModalTema = ({ onClose }) => {
   const [color, setColor] = useState('#ffffff');
@@ -20,7 +22,19 @@ const ModalTema = ({ onClose }) => {
   const handleSave = async () => {
     try {
       setStatus('Lagrer...');
-      await lagreTema('event1', color, file);
+      let imageUrl = '';
+
+      if (file) {
+        const storageRef = ref(storage, `bakgrunnsbilder/demoEvent/${file.name}`);
+        await uploadBytes(storageRef, file);
+        imageUrl = await getDownloadURL(storageRef);
+      }
+
+      await lagreAdminInnstillinger('demoEvent', {
+        temafarge: color,
+        bakgrunnsbildeUrl: imageUrl,
+      });
+
       setStatus('Tema lagret!');
     } catch (error) {
       console.error(error);
