@@ -1,6 +1,7 @@
 // ModalSprak.js
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
+import { lagreAdminInnstillinger } from '../firebase/lagreAdminInnstillinger';
 
 const ModalSprak = ({ onClose }) => {
   const [language, setLanguage] = useState('no');
@@ -10,8 +11,13 @@ const ModalSprak = ({ onClose }) => {
   const handleSave = async () => {
     try {
       setStatus('Lagrer...');
-      // Her kan du koble til Firestore hvis ønskelig senere
-      console.log('Språkvalg lagret:', { language, dateFormat });
+      
+      // 🚀 Her kobler vi til Firestore og lagrer språkvalg og datoformat
+      await lagreAdminInnstillinger('demoEvent', {
+        språk: language,
+        datoformat: dateFormat,
+      });
+
       setStatus('Valg lagret!');
     } catch (error) {
       console.error(error);
