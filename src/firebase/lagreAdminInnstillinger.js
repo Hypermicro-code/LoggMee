@@ -1,6 +1,6 @@
 // src/firebase/lagreAdminInnstillinger.js
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "./firebaseConfig";
+import { db } from "./firebase";
 
 export async function lagreAdminInnstillinger(arrangementId, innstillinger) {
   try {
