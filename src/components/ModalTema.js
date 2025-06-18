@@ -1,8 +1,8 @@
-// ModalTema.js – oppdatert for Firestore + Firebase Storage
+// ModalTema.js – tilpasset til din firebase.js
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
 import { lagreAdminInnstillinger } from '../firebase/lagreAdminInnstillinger';
-import { storage } from '../firebase';
+import { storage } from '../firebase'; // <- viktig: korrekt sti til din firebase.js
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ModalTema = ({ onClose }) => {
