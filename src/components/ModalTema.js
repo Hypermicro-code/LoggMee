@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CustomButton from './CustomButton';
 import { lagreAdminInnstillinger } from '../firebase/lagreAdminInnstillinger';
-import { storage } from '../firebase/firebaseConfig';
+import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ModalTema = ({ onClose }) => {
